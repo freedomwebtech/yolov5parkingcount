@@ -2,8 +2,7 @@ import cv2
 import torch
 import time
 import numpy as np
-from vidgear.gears import CamGear
-from tracker import*
+
 points=[]
 def POINTS(event, x, y, flags, param):
     if event == cv2.EVENT_MOUSEMOVE :  
@@ -29,18 +28,9 @@ while True:
     ret,frame=cap.read()
     if not ret:
         break
-#    frame = stream.read()
-#    count += 1
-#    if count % 2 != 0:
-#        continue
     frame=cv2.resize(frame,(1020,600))
-#    h,w,_=frame.shape
-#    print(w)
 
     results=model(frame)
-
-#    frame=np.squeeze(results.render())
-    list=[]
     for index, row in results.pandas().xyxy[0].iterrows():
         x1 = int(row['xmin'])
         y1 = int(row['ymin'])
