@@ -1,6 +1,5 @@
 import cv2
 import torch
-import time
 import numpy as np
 
 points=[]
@@ -46,7 +45,7 @@ while True:
     cv2.imshow("FRAME",frame)
     cv2.setMouseCallback("FRAME",POINTS)
    
-    time.sleep(1)
+
     if cv2.waitKey(1)&0xFF==27:
         break
 cap.release()
